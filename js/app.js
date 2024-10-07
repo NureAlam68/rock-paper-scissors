@@ -3,6 +3,8 @@ let compScore = 0;
 
 const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
+const userScoreValue = document.getElementById("user-score");
+const compScoreValue = document.getElementById("comp-score");
 
 
 const genCompChoice = () => {
@@ -13,7 +15,7 @@ const genCompChoice = () => {
 
 
 const drawGame = () => {
-    console.log('draw game!');
+    // console.log('draw game!');
     msg.innerText = "Game Draw!";
     msg.style.backgroundColor = "#081b31";
 }
@@ -21,11 +23,13 @@ const drawGame = () => {
 
 const showWinner = (userWin, userChoice, compChoice) => {
     if (userWin) {
-        console.log('you win');
+        userScore++;
+        userScoreValue.innerText = userScore;
         msg.innerText = `You win! Your ${userChoice} beats ${compChoice}`;
         msg.style.backgroundColor = "green";
     } else {
-        console.log('you lose');
+        compScore++;
+        compScoreValue.innerText = compScore;
         msg.innerText = `You lost! ${compChoice} beats your ${userChoice}`;
         msg.style.backgroundColor = "red";
     }
@@ -33,10 +37,10 @@ const showWinner = (userWin, userChoice, compChoice) => {
 
 
 const playGame = (userChoice) => {
-    console.log('user choice', userChoice);
+    // console.log('user choice', userChoice);
     // generate computer choice
     const compChoice = genCompChoice();
-    console.log('comp choice', compChoice);
+    // console.log('comp choice', compChoice);
 
     if (userChoice === compChoice) {
         drawGame();
